@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_all">
+    <include
+        android:id="@+id/include_chat_title"
+        layout="@layout/item_chat_title_show"/>
+        <!--android:stackFromBottom="true"-->
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/rc_chat_choice"
+        android:visibility="gone"
+        android:background="@drawable/bg_edittext"
+        android:layout_below="@+id/include_chat_title" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:divider="#0000"
+        android:listSelector="#0000"
+        android:id="@+id/lv_chat_show"
+        android:scrollbarStyle="insideInset"
+        android:transcriptMode="normal"
+        android:layout_above="@+id/ll_sand"
+        android:layout_below="@+id/rc_chat_choice" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#c7c9cf"
+        android:layout_margin="5dp"
+        android:layout_above="@+id/ll_sand"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_sand"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_margin="2dp"
+            android:layout_weight="9"
+            android:id="@+id/et_chat_input"
+            android:background="@drawable/bg_edittext">
+            <requestFocus/>
+
+        </EditText>
+        <Button
+            android:id="@+id/bt_chat_send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.2"
+            android:background="@drawable/paperplane"/>
+    </LinearLayout>
+
+</RelativeLayout>
