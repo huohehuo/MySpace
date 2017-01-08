@@ -11,6 +11,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Random;
 
+import cn.bmob.push.BmobPush;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.util.LogUtil;
 
 /**
@@ -36,9 +40,20 @@ public class LinsApp extends Application {
         application = this;
         context = getApplicationContext();
         // 对极光推送功能进行初始化
-        // JPushInterface.setDebugMode(true);
-        // JPushInterface.init(this);
+         JPushInterface.setDebugMode(true);
+         JPushInterface.init(this);
+
+        // 初始化BmobSDK
+        Bmob.initialize(this, "ad40cb849a8f486074cfe7171f99096e");
+//        // 使用推送服务时的初始化操作
+//        BmobInstallation.getCurrentInstallation(this).save();
+        // 启动推送服务
+ //       BmobPush.startWork(this);
+
+
         LogUtil.d(LogUtil.TAG, "application onCreate");
+
+
     }
 
     // 用于给需要Context的方法提供context，可直接写LinsApp.getContext()即可获取到当前context上下文

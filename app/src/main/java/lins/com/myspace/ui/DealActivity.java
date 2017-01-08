@@ -96,7 +96,7 @@ public class DealActivity extends MyBaseActivity {
             @Override
             public void onItemClick(View view, int position, TextBoxInfo textBoxInfo) {
                 sendChange(textBoxInfo);
-                Toast.makeText(LinsApp.getContext(), "" + textBoxInfo.getName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(LinsApp.getContext(), "" + textBoxInfo.getName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

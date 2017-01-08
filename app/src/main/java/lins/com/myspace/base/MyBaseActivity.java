@@ -22,6 +22,8 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.bmob.v3.BmobInstallation;
+import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.R;
 import lins.com.myspace.ui.AddActivity;
 import lins.com.myspace.util.LogUtil;
@@ -195,14 +197,14 @@ public class MyBaseActivity extends AppCompatActivity {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        //JPushInterface.onResume(this);
+        JPushInterface.onResume(this);
         LogUtil.d(LogUtil.TAG,"application onResume");
     }
     @Override
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        //JPushInterface.onPause(this);
+        JPushInterface.onPause(this);
         LogUtil.d(LogUtil.TAG,"application onPause");
     }
     @Override
