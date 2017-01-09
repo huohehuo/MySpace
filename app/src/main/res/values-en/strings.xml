@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RHere</string>
+    <string name="menu_bottom_two">Message</string>
+    <string name="xlistview_footer_hint_normal">More</string>
+    <string name="xlistview_footer_hint_ready">going More Loading</string>
+    <string name="xlistview_header_hint_loading">Loading...</string>
+    <string name="xlistview_header_hint_normal" translatable="false">Update</string>
+    <string name="xlistview_header_last_time">Last Time Update</string>
+    <string name="xlistview_header_hint_ready">going Update</string>
+    <string name="menu_bottom_one">Home</string>
+    <string name="menu_bottom_three">Mine</string>
+</resources>

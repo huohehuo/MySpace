@@ -34,7 +34,7 @@ public class AboutActivity extends MyBaseActivity {
             "嘘~", "发邮件给我啊反正发了我也不会看", "别点了，去写点东西吧", "如果作者有台帮一点的电脑", "版本就会更新得很漂亮",//
             "你说什么？(=_0", "嗯哼？", "谁？是雨荷吗", "低碳点，别乱卸载", "版本就会更新得很漂亮",//
             "哎", "明骚难防 (v_v", "那谁，你首胜掉了", "发邮件给作者有一分钱红包拿", "蟹蟹~",//
-            "我不听我不听"};
+            "我不听我不听","无广告，不忽悠","作者不穷，只是没钱","作者是无业良民"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

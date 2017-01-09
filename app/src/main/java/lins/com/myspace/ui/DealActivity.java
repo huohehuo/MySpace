@@ -95,7 +95,11 @@ public class DealActivity extends MyBaseActivity {
         textBoxAdapter.setmOnItemClickListener(new DealTBAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, TextBoxInfo textBoxInfo) {
-                sendChange(textBoxInfo);
+                if (textBoxManager.getTextBoxCount() <= 0) {
+                    Toast.makeText(LinsApp.getContext(), "文字包无数据，请在左侧菜单添加", Toast.LENGTH_SHORT).show();
+                } else {
+                    sendChange(textBoxInfo);
+                }
                // Toast.makeText(LinsApp.getContext(), "" + textBoxInfo.getName(), Toast.LENGTH_SHORT).show();
             }
 
