@@ -54,7 +54,7 @@ public class WelcomeActivity extends MyBaseActivity {
             openActivity(MainActivity.class);
             finish();
         }
-
+        
         @Override
         public void onAnimationRepeat(Animation animation) {
             //当动画重复的时候执行
