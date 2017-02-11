@@ -19,6 +19,7 @@ public class Area {
 //            "YlineMin":39.000991,
 //            "YlineMax":41.000991
 //    }
+    
     @SerializedName("currentPage")
     private int currentPage = 1;
 
