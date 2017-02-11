@@ -32,6 +32,7 @@ import lins.com.myspace.model.DiaryManager;
 import lins.com.myspace.model.TextBoxManager;
 import lins.com.myspace.ui.AboutActivity;
 import lins.com.myspace.ui.DealActivity;
+import lins.com.myspace.ui.MainActivity;
 import lins.com.myspace.ui.TextBoxActivity;
 import lins.com.myspace.ui.user.account.AccountActivity;
 import lins.com.myspace.ui.user.login.LoginActivity;
@@ -171,7 +172,7 @@ public class FragmentLeft extends Fragment {
         LogUtil.d("左边onPause");
     }
 
-    @OnClick({R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data, R.id.tv_btn_thr, R.id.tv_btn_left_data, R.id.iv_lefttop_about, R.id.iv_lefttop_loc})
+    @OnClick({R.id.rl_menu_two,R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data, R.id.tv_btn_thr, R.id.tv_btn_left_data, R.id.iv_lefttop_about, R.id.iv_lefttop_loc})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left_icon:
@@ -203,6 +204,10 @@ public class FragmentLeft extends Fragment {
                 getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
                 break;
             case R.id.iv_lefttop_loc:
+                ((MainActivity) getActivity()).showLocation();
+                break;
+            case R.id.rl_menu_two:
+                ((MainActivity) getActivity()).showFragmentMain();
                 break;
         }
     }

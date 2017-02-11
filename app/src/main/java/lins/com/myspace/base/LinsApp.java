@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 
 
+import com.baidu.mapapi.SDKInitializer;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -50,7 +52,7 @@ public class LinsApp extends Application {
 //        BmobInstallation.getCurrentInstallation(this).save();
         // 启动推送服务
  //       BmobPush.startWork(this);
-
+        SDKInitializer.initialize(getApplicationContext());
         UserPrefs.init(getApplicationContext());
         LogUtil.d(LogUtil.TAG, "application onCreate");
 

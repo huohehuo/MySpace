@@ -3,6 +3,7 @@ package lins.com.myspace.ui.user.account;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,12 +30,27 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         mUnbinder=ButterKnife.bind(this);
-
+        // toolBar
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("个人信息");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         //BmobUser bmobUser = BmobUser.getCurrentUser();
         User user = BmobUser.getCurrentUser(User.class);
 
         tvMsg.setText(user.getUsername()+"---"+user.getObjectId());
 
+    }
+    // toolbar上返回箭头的处理
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @OnClick(R.id.btn_account_out)

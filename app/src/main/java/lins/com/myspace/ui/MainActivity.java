@@ -1,9 +1,6 @@
 package lins.com.myspace.ui;
 
-import android.media.Image;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -11,27 +8,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import lins.com.myspace.R;
 import lins.com.myspace.base.LinsApp;
-import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.base.MyBaseFragment;
-import lins.com.myspace.io.ChangeView;
 import lins.com.myspace.ui.fragment.FragmentLeft;
 import lins.com.myspace.ui.fragment.FragmentMain;
 import lins.com.myspace.ui.fragment.FragmentMsg;
-import lins.com.myspace.ui.fragment.FragmentRight;
+import lins.com.myspace.ui.fragment.map.MapFragment;
 import lins.com.myspace.ui.fragment.FragmentUser;
-import lins.com.myspace.util.PopupWindowUtil;
 import lins.com.myspace.view.SlidingMenu;
 
 
@@ -39,7 +31,7 @@ public class MainActivity extends MyBaseFragment {
     // 按两次退出
     private boolean isFirstExit = true;
     //声明各个碎片，并用父类Fragment接收
-    private Fragment fragmentMain, fragmentRight, fragmentLeft, fragmentMsg,fragmentUser;
+    private Fragment fragmentMain, fragmentLocation, fragmentLeft, fragmentMsg,fragmentUser;
     public static SlidingMenu slidingMenu;
 
     private ImageView iv_left, iv_right;
@@ -71,6 +63,15 @@ public class MainActivity extends MyBaseFragment {
         // 将当前主界面替换为新闻列表界面
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragmentMain).commit();
+    }
+    public void showLocation() {
+        setTitle("地图");
+        slidingMenu.showContent();
+        if (fragmentLocation == null) {
+            fragmentLocation = new MapFragment();
+        }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, fragmentLocation).commit();
     }
 
     public void showMenuOne() {
@@ -124,7 +125,7 @@ public class MainActivity extends MyBaseFragment {
     //初始化控件等
     private void init() {
         fragmentLeft = new FragmentLeft();
-        fragmentRight = new FragmentRight();
+        fragmentLocation = new MapFragment();
         fragmentMain = new FragmentMain();
         fragmentMsg = new FragmentMsg();
         fragmentUser = new FragmentUser();

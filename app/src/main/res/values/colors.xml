@@ -7,7 +7,7 @@
 
 
 
-
+    <color name="all_bg">#eceae1</color>
     <color name="colorPrimary">#413839</color>
     <color name="colorPrimaryDark">#413839</color>
     <color name="colorAccent">#22BED2</color>

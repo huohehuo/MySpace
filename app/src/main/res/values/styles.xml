@@ -15,7 +15,7 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
-    <item name="android:windowBackground">@mipmap/screen_bg</item>
+    <item name="android:windowBackground">@color/all_bg</item>
     </style>
     <style name="MyDiaLog" parent="Theme.AppCompat.Dialog">
         <!-- Customize your theme here. -->
