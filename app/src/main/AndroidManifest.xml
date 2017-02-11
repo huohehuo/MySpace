@@ -50,7 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.user.login.LoginActivity" />
         <activity
             android:name=".ui.AddActivity"
             android:launchMode="singleInstance" />
@@ -64,10 +64,7 @@
         <activity android:name=".ui.AboutActivity" />
         <activity android:name=".ui.DealActivity" />
         <activity android:name=".ui.TextBoxActivity" />
-
-
-
-        <activity android:name=".ui.MainActivity"></activity>
+        <activity android:name=".ui.MainActivity" />
         <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
@@ -135,7 +132,7 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <!-- Required SDK核心功能 -->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
@@ -175,6 +172,8 @@
             android:name="JPUSH_APPKEY"
             android:value="ed012ae37c58d0f6e8a1df87" />
 
+        <activity android:name=".ui.user.register.RegisterActivity" />
+        <activity android:name=".ui.user.account.AccountActivity"></activity>
     </application>
 
 </manifest>

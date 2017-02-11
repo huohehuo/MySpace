@@ -21,6 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
 import lins.com.myspace.R;
 import lins.com.myspace.adapter.TextBoxAdapter;
 import lins.com.myspace.base.LinsApp;
@@ -32,6 +33,8 @@ import lins.com.myspace.model.TextBoxManager;
 import lins.com.myspace.ui.AboutActivity;
 import lins.com.myspace.ui.DealActivity;
 import lins.com.myspace.ui.TextBoxActivity;
+import lins.com.myspace.ui.user.account.AccountActivity;
+import lins.com.myspace.ui.user.login.LoginActivity;
 import lins.com.myspace.util.LogUtil;
 import lins.com.myspace.util.PopupWindowUtil;
 
@@ -63,6 +66,7 @@ public class FragmentLeft extends Fragment {
     private TextBoxAdapter textBoxAdapter;
     private TextBoxManager textBoxManager;
     private DiaryManager diaryManager;
+    private BmobUser bmobUser;
     private TextBoxInfo isDelTb;
     private int isDelTbNum;
 
@@ -127,17 +131,6 @@ public class FragmentLeft extends Fragment {
         tv_text_num.setText(diaryManager.getTextCount() + "");
     }
 
-    final IsFinishIO isFinishIO = new IsFinishIO() {
-        @Override
-        public void isFinish() {
-//            textBoxManager.deleteById(isDelTb);
-//            textBoxAdapter.delData(isDelTbNum);
-//            textBoxAdapter.updata();
-            Toast.makeText(LinsApp.getContext(), "删除成功", Toast.LENGTH_SHORT).show();
-            sendChange();
-        }
-    };
-
     //发送Handler通知主线程更新UI
     private void sendChange() {
         Message message = Message.obtain();
@@ -161,7 +154,13 @@ public class FragmentLeft extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        LogUtil.d("左边onResume");
+        LogUtil.d("左侧栏onResume");
+        bmobUser = BmobUser.getCurrentUser();
+        if (bmobUser !=null){
+            iv_icon.setImageResource(R.mipmap.ic_launcher);
+        }else{
+            iv_icon.setImageResource(R.drawable.user2);
+        }
         //mDatas = TextBoxManager.query();
         textBoxAdapter.updata();
     }
@@ -172,12 +171,18 @@ public class FragmentLeft extends Fragment {
         LogUtil.d("左边onPause");
     }
 
-    @OnClick({R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data,R.id.tv_btn_thr, R.id.tv_btn_left_data})
+    @OnClick({R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data, R.id.tv_btn_thr, R.id.tv_btn_left_data, R.id.iv_lefttop_about, R.id.iv_lefttop_loc})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left_icon:
-                startActivity(new Intent(getActivity(), AboutActivity.class));
-                getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
+                if (bmobUser!=null){
+                    startActivity(new Intent(getActivity(), AccountActivity.class));
+                    getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
+                }else{
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
+                }
+
                 break;
             case R.id.btn_thr_ud:
             case R.id.tv_btn_thr:
@@ -192,6 +197,12 @@ public class FragmentLeft extends Fragment {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                LinsApp.getContext().startActivity(intent);
 //                getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
+                break;
+            case R.id.iv_lefttop_about:
+                startActivity(new Intent(getActivity(), AboutActivity.class));
+                getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
+                break;
+            case R.id.iv_lefttop_loc:
                 break;
         }
     }

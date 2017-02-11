@@ -16,6 +16,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
 import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.util.LogUtil;
+import lins.com.myspace.util.UserPrefs;
 
 /**
  * Created by LINS on 2016/12/20.
@@ -50,7 +51,7 @@ public class LinsApp extends Application {
         // 启动推送服务
  //       BmobPush.startWork(this);
 
-
+        UserPrefs.init(getApplicationContext());
         LogUtil.d(LogUtil.TAG, "application onCreate");
 
 

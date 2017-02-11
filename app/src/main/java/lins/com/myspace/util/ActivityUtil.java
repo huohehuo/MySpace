@@ -1,7 +1,12 @@
 package lins.com.myspace.util;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +18,61 @@ import java.util.List;
  * Please Try Hard
  */
 public class ActivityUtil {
+
+
+    // 弱引用
+    private WeakReference<Activity> activityWeakReference;
+    private WeakReference<Fragment> fragmentWeakReference;
+
+    private Toast toast;
+
+    public ActivityUtil(Activity activity) {
+        activityWeakReference = new WeakReference<>(activity);
+    }
+
+    public ActivityUtil(Fragment fragment){
+        fragmentWeakReference = new WeakReference<>(fragment);
+    }
+
+    private @Nullable
+    Activity getActivity() {
+
+        if (activityWeakReference != null) return activityWeakReference.get();
+        if (fragmentWeakReference != null) {
+            Fragment fragment = fragmentWeakReference.get();
+            return fragment == null? null : fragment.getActivity();
+        }
+        return null;
+    }
+
+    // 封装的弹吐司的方法
+    public void showToast(CharSequence msg){
+        Activity activity = getActivity();
+        if (activity != null){
+            if (toast == null) toast = Toast.makeText(activity, msg, Toast.LENGTH_SHORT);
+            toast.setText(msg);
+            toast.show();
+        }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    public void showToast(int resId){
+        Activity activity = getActivity();
+        if (activity != null) {
+            String msg = activity.getString(resId);
+            showToast(msg);
+        }
+    }
+
+    // 跳转页面
+    public void startActivity(Class<? extends Activity> clazz){
+        Activity activity = getActivity();
+        if (activity == null) return;
+        Intent intent = new Intent(activity, clazz);
+        activity.startActivity(intent);
+    }
     //用于存放每个Activity的集合
     public static List<Activity> activities = new ArrayList<Activity>();
-
     /**
      * 添加Activity到集合中
      * @param activity	可传入当前Activity对象
