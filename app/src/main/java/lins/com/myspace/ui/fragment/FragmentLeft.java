@@ -172,7 +172,7 @@ public class FragmentLeft extends Fragment {
         LogUtil.d("左边onPause");
     }
 
-    @OnClick({R.id.rl_menu_two,R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data, R.id.tv_btn_thr, R.id.tv_btn_left_data, R.id.iv_lefttop_about, R.id.iv_lefttop_loc})
+    @OnClick({R.id.rl_menu_two,R.id.iv_left_icon, R.id.btn_thr_ud, R.id.btn_left_data, R.id.tv_btn_thr, R.id.tv_btn_left_data, R.id.iv_lefttop_about})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left_icon:
@@ -202,9 +202,6 @@ public class FragmentLeft extends Fragment {
             case R.id.iv_lefttop_about:
                 startActivity(new Intent(getActivity(), AboutActivity.class));
                 getActivity().overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);
-                break;
-            case R.id.iv_lefttop_loc:
-                ((MainActivity) getActivity()).showLocation();
                 break;
             case R.id.rl_menu_two:
                 ((MainActivity) getActivity()).showFragmentMain();

@@ -3,34 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/screen_bg">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_left_head"
+        android:id="@+id/relativeLayout">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iv_account_icon"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/user2"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:id="@+id/ttttt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文字包 | "
+
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/tv_left_textbox_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200"
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/ttt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    文字 | "
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/tv_left_text_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+
+                android:textSize="18sp"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_msg"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_above="@+id/btn_account_out"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:background="#707070"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btn_account_out" />
 
     <Button
         android:id="@+id/btn_account_out"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_60"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/dp_200"
-        android:layout_marginLeft="@dimen/dp_50"
-        android:layout_marginRight="@dimen/dp_50"
         android:text="@string/log_out"
-        android:textSize="@dimen/sp_16" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_16"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="@dimen/dp_16"
-        android:layout_marginRight="@dimen/dp_16"
-        android:src="@mipmap/screen_bottom_line" />
-
-
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

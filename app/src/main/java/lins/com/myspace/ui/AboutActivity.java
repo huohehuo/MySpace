@@ -1,5 +1,6 @@
 package lins.com.myspace.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
@@ -12,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lins.com.myspace.R;
+import lins.com.myspace.base.LinsApp;
 import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.view.KeywordsFlow;
 
@@ -31,8 +33,8 @@ public class AboutActivity extends MyBaseActivity {
             "今天有没有心情很棒", "你好啊 (o_o", "how ？", "I don't cares", "哦没写~",//
             "呵呵", "软件好烂哦但是作者没给地方你吐槽啊嘻嘻", "谢谢使用", "嗯~", "Thanks",//
             "明天见", "嘘~我要超进化了", "别动，我要卡机了", "哟嚯~", "有bug正常啊(*_*",//
-            "嘘~", "发邮件给我啊反正发了我也不会看", "别点了，去写点东西吧", "如果作者有台帮一点的电脑", "版本就会更新得很漂亮",//
-            "你说什么？(=_0", "嗯哼？", "谁？是雨荷吗", "低碳点，别乱卸载", "版本就会更新得很漂亮",//
+            "嘘~", "发邮件给我啊反正发了我也不会看", "别点了，去写点东西吧", "假如作者有台棒一点的电脑", "版本就会更新得很漂亮",//
+            "你说什么？(=_0", "嗯哼？", "谁？是雨荷吗", "低碳点，留着以后没准有用", "版本就会更新得很漂亮",//
             "哎", "明骚难防 (v_v", "那谁，你首胜掉了", "发邮件给作者有一分钱红包拿", "蟹蟹~",//
             "我不听我不听","无广告，不忽悠","作者不穷，只是没钱","作者是无业良民"};
 
@@ -76,6 +78,9 @@ public class AboutActivity extends MyBaseActivity {
         feedKeywordsFlow(keyflowAbout, keywords);
         keyflowAbout.go2Show(KeywordsFlow.ANIMATION_IN);//由外至内的动画
 //            keywordsFlow.go2Show(KeywordsFlow.ANIMATION_OUT);//由内至外的动画
+
+       // startActivity(new Intent(LinsApp.getContext(),WebActivity.class));
+
     }
 
     private static void feedKeywordsFlow(KeywordsFlow keywordsFlow, String[] arr) {

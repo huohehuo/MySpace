@@ -64,16 +64,6 @@ public class MainActivity extends MyBaseFragment {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content, fragmentMain).commit();
     }
-    public void showLocation() {
-        setTitle("地图");
-        slidingMenu.showContent();
-        if (fragmentLocation == null) {
-            fragmentLocation = new MapFragment();
-        }
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content, fragmentLocation).commit();
-    }
-
     public void showMenuOne() {
         showFragmentMain();
 
@@ -110,7 +100,7 @@ public class MainActivity extends MyBaseFragment {
         slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         // 设置左右菜单栏的布局
         slidingMenu.setMenu(R.layout.left);
-        slidingMenu.setSecondaryMenu(R.layout.right);
+        //slidingMenu.setSecondaryMenu(R.layout.right);
         // 设置左右菜单栏具体的
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fgm_left, fragmentLeft).commit();
@@ -125,7 +115,6 @@ public class MainActivity extends MyBaseFragment {
     //初始化控件等
     private void init() {
         fragmentLeft = new FragmentLeft();
-        fragmentLocation = new MapFragment();
         fragmentMain = new FragmentMain();
         fragmentMsg = new FragmentMsg();
         fragmentUser = new FragmentUser();

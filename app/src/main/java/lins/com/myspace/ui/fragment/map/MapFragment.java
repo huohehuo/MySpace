@@ -2,18 +2,20 @@ package lins.com.myspace.ui.fragment.map;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -43,7 +45,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import lins.com.myspace.R;
+import lins.com.myspace.base.LinsApp;
 import lins.com.myspace.util.ActivityUtil;
 
 
@@ -51,7 +55,7 @@ import lins.com.myspace.util.ActivityUtil;
  * Created by LINS on 2016/12/20.
  * Please Try Hard
  */
-public class MapFragment extends Fragment implements MapMvpView{
+public class MapFragment extends AppCompatActivity implements MapMvpView {
     private static final int ACCESS_LOCATION = 100;
     @BindView(R.id.map_frame)
     FrameLayout mMapFrame;
@@ -61,16 +65,8 @@ public class MapFragment extends Fragment implements MapMvpView{
     Button mBtnHideHere;
     @BindView(R.id.centerLayout)
     RelativeLayout mCenterLayout;
-    @BindView(R.id.iv_scaleUp)
-    ImageView mIvScaleUp;
-    @BindView(R.id.iv_scaleDown)
-    ImageView mIvScaleDown;
     @BindView(R.id.tv_located)
     TextView mTvLocated;
-    @BindView(R.id.tv_satellite)
-    TextView mTvSatellite;
-    @BindView(R.id.tv_compass)
-    TextView mTvCompass;
     @BindView(R.id.tv_currentLocation)
     TextView mTvCurrentLocation;
     @BindView(R.id.iv_toTreasureInfo)
@@ -83,6 +79,10 @@ public class MapFragment extends Fragment implements MapMvpView{
     TreasureView mTreasureView;
     @BindView(R.id.hide_treasure)
     RelativeLayout mHideTreasure;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.iv_write_loc)
+    ImageButton ivWriteLoc;
 
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
@@ -94,29 +94,46 @@ public class MapFragment extends Fragment implements MapMvpView{
     private boolean mIsFirst = true;
 
     private ActivityUtil mActivityUtils;
-   // private MapPresenter mPresenter;
+    // private MapPresenter mPresenter;
     private GeoCoder mGeoCoder;
     private String mCurrentAddr;
     private static String mLocationAddr;
 
-    @Nullable
+    private Unbinder unbinder;
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_map);
         //        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION)== PackageManager.PERMISSION_DENIED){
 //            // 需要动态获取权限的
 //            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},ACCESS_LOCATION);
 //        }else {
 //            // 不需要去动态获取权限
 //        }
-        View view = inflater.inflate(R.layout.fragment_map, null);
-        return view;
+
+        // toolBar
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    // toolbar上返回箭头的处理
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+    public void onContentChanged() {
+        super.onContentChanged();
+        unbinder=ButterKnife.bind(this);
 
         //mPresenter = new MapPresenter(this);
 
@@ -124,13 +141,12 @@ public class MapFragment extends Fragment implements MapMvpView{
 
         //初始化百度地图
         initMapView();
-
         //初始化定位相关
         initLocation();
-
         // 地理编码的初始化相关
         initGeoCoder();
     }
+
     // 地理编码的初始化相关
     private void initGeoCoder() {
         // 初始化：创建出一个地理编码查询的对象
@@ -141,11 +157,9 @@ public class MapFragment extends Fragment implements MapMvpView{
 
     // 地理编码的监听
     private OnGetGeoCoderResultListener mGeoCoderResultListener = new OnGetGeoCoderResultListener() {
-
         // 得到地理编码的结果：地址-->经纬度
         @Override
         public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
-
         }
 
         // 得到反向地理编码的结果：经纬度-->地址
@@ -156,10 +170,8 @@ public class MapFragment extends Fragment implements MapMvpView{
                 mCurrentAddr = "未知的位置";
                 return;
             }
-
             // 拿到反地理编码得到的位置信息
             mCurrentAddr = reverseGeoCodeResult.getAddress();
-
             // 将地址信息给TextView设置上
             mTvCurrentLocation.setText(mCurrentAddr);
         }
@@ -169,9 +181,8 @@ public class MapFragment extends Fragment implements MapMvpView{
     private void initLocation() {
         // 前置：激活定位图层
         mBaiduMap.setMyLocationEnabled(true);
-
         // 第一步，初始化LocationClient类:LocationClient类必须在主线程中声明，需要Context类型的参数。
-        mLocationClient = new LocationClient(getContext().getApplicationContext());
+        mLocationClient = new LocationClient(LinsApp.getContext());
 
         // 第二步，配置定位SDK参数
         LocationClientOption option = new LocationClientOption();
@@ -193,13 +204,11 @@ public class MapFragment extends Fragment implements MapMvpView{
         // 获取到定位结果
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
-
             // 如果没有拿到结果，重新请求：部分机型会失败
             if (bdLocation == null) {
                 mLocationClient.requestLocation();
                 return;
             }
-
             // 定位结果的经纬度
             double latitude = bdLocation.getLatitude();
             double longitude = bdLocation.getLongitude();
@@ -215,7 +224,6 @@ public class MapFragment extends Fragment implements MapMvpView{
                     .build();
             //定位数据展示到地图上
             mBaiduMap.setMyLocationData(data);
-            //移动到定位的地方，在地图上展示定位的信息：位置
             // 移动到定位的地方，在地图上展示定位的信息：位置
             // 做一个判断：第一次进入页面自动移动，其他时候点击按钮移动
             if (mIsFirst) {
@@ -233,27 +241,23 @@ public class MapFragment extends Fragment implements MapMvpView{
                 .overlook(0)// 俯仰的角度
                 .rotate(0)// 旋转的角度
                 .build();
-
         // 设置百度地图的设置信息
         BaiduMapOptions options = new BaiduMapOptions()
                 .mapStatus(mapStatus)
                 .compassEnabled(true)// 是否显示指南针
                 .zoomGesturesEnabled(true)// 是否允许缩放手势
                 .scaleControlEnabled(false)// 不显示比例尺
-                .zoomControlsEnabled(false)// 不显示缩放的控件
+                .zoomControlsEnabled(true)// 显示缩放的控件
                 ;
-
         // 创建
-        mMapView = new MapView(getContext(), options);
+        mMapView = new MapView(this, options);
 
         // 在布局上添加地图控件：0，代表第一位
         mMapFrame.addView(mMapView, 0);
-
         // 拿到地图的操作类(控制器：操作地图等都是使用这个)
         mBaiduMap = mMapView.getMap();
         // 设置地图状态的监听
         mBaiduMap.setOnMapStatusChangeListener(mStatusChangeListener);
-
         // 设置地图上标注物的点击监听
         mBaiduMap.setOnMarkerClickListener(mMarkerClickListener);
     }
@@ -291,7 +295,7 @@ public class MapFragment extends Fragment implements MapMvpView{
             //宝藏信息的取出和展示
             int id = marker.getExtraInfo().getInt("id");
             //Treasure treasure = TreasureRepo.getInstance().getTreasure(id);
-           // mTreasureView.bindTreasure(treasure);
+            // mTreasureView.bindTreasure(treasure);
 
             // 切换到宝藏选中视图
             changeUIMode(UI_MODE_SECLECT);
@@ -301,80 +305,37 @@ public class MapFragment extends Fragment implements MapMvpView{
 
     // 地图状态的监听
     private BaiduMap.OnMapStatusChangeListener mStatusChangeListener = new BaiduMap.OnMapStatusChangeListener() {
-
         // 变化前
         @Override
         public void onMapStatusChangeStart(MapStatus mapStatus) {
-
         }
 
         // 变化中
         @Override
         public void onMapStatusChange(MapStatus mapStatus) {
-
         }
 
         // 变化结束后
         @Override
         public void onMapStatusChangeFinish(MapStatus mapStatus) {
-
             // 当前地图的位置
             LatLng target = mapStatus.target;
-
             // 确实地图的状态发生变化了
             if (target != MapFragment.this.mCurrentStatus) {
-
                 // 地图状态发生变化以后实时获取当前区域内的宝藏
                 updateMapArea();
-
                 // 在埋藏宝藏的情况下
                 if (mUIMode == UI_MODE_HIDE) {
-
                     // 设置反地理编码的位置
                     ReverseGeoCodeOption option = new ReverseGeoCodeOption();
                     option.location(target);
-
                     // 发起反地理编码
                     mGeoCoder.reverseGeoCode(option);
                 }
-
                 MapFragment.this.mCurrentStatus = target;
             }
         }
     };
-
-    // 卫星视图和普通视图的切换
-    @OnClick(R.id.tv_satellite)
-    public void switchMapType() {
-        int mapType = mBaiduMap.getMapType();// 获取当前的地图类型
-        // 切换类型
-        mapType = (mapType == BaiduMap.MAP_TYPE_NORMAL) ? BaiduMap.MAP_TYPE_SATELLITE : BaiduMap.MAP_TYPE_NORMAL;
-        // 卫星和普通的文字的显示
-        String msg = mapType == BaiduMap.MAP_TYPE_NORMAL ? "卫星" : "普通";
-        mBaiduMap.setMapType(mapType);
-        mTvSatellite.setText(msg);
-    }
-
-    // 指南针
-    @OnClick(R.id.tv_compass)
-    public void switchCompass() {
-        // 指南针有没有显示
-        boolean compassEnabled = mBaiduMap.getUiSettings().isCompassEnabled();
-        mBaiduMap.getUiSettings().setCompassEnabled(!compassEnabled);
-    }
-
-    // 地图的缩放
-    @OnClick({R.id.iv_scaleDown, R.id.iv_scaleUp})
-    public void scaleMap(View view) {
-        switch (view.getId()) {
-            case R.id.iv_scaleDown:
-                mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomOut());
-                break;
-            case R.id.iv_scaleUp:
-                mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomIn());
-                break;
-        }
-    }
 
     // 定位的按钮：移动到定位的地方
     @OnClick(R.id.tv_located)
@@ -391,9 +352,20 @@ public class MapFragment extends Fragment implements MapMvpView{
         //更新展示的地图的状态
         mBaiduMap.animateMapStatus(update);
     }
+    //埋藏宝藏按钮
+    @OnClick(R.id.iv_write_loc)
+    public void writeLoc(){
+        // MapFragment里面视图的普通的视图，可以退出
+        if (clickbackPrssed()) {
+            changeUIMode(2);
+        }else{
+            changeUIMode(0);
+        }
+    }
+
     // 宝藏显示的卡片的点击事件
     @OnClick(R.id.treasureView)
-    public void clickTreasureView(){
+    public void clickTreasureView() {
         // 跳转到详情页,拿到当前的Marker的宝藏，并传递过去
         int id = mCurrentMarker.getExtraInfo().getInt("id");
         Treasure treasure = TreasureRepo.getInstance().getTreasure(id);
@@ -402,16 +374,18 @@ public class MapFragment extends Fragment implements MapMvpView{
 
     // 点击宝藏标题录入的卡片，跳转埋藏宝藏的详细页面
     @OnClick(R.id.hide_treasure)
-    public void hideTreasure(){
+    public void hideTreasure() {
         String title = mEtTreasureTitle.getText().toString();
-        if (TextUtils.isEmpty(title)){
+        if (TextUtils.isEmpty(title)) {
             mActivityUtils.showToast("请输入宝藏标题");
             return;
         }
         // 跳转到埋藏宝藏的详细页面
         LatLng latLng = mBaiduMap.getMapStatus().target;
-       // HideTreasureActivity.open(getContext(),title,mCurrentAddr,latLng,0);
+        // HideTreasureActivity.open(getContext(),title,mCurrentAddr,latLng,0);
+        Toast.makeText(MapFragment.this, "位置为："+latLng+mCurrentAddr, Toast.LENGTH_SHORT).show();
     }
+
     // 根据位置的变化，区域也发生了变化
     private void updateMapArea() {
 
@@ -458,7 +432,7 @@ public class MapFragment extends Fragment implements MapMvpView{
     }
 
     // 将定位的地址供其它调用获取
-    public static String getLocationAddr(){
+    public static String getLocationAddr() {
         return mLocationAddr;
     }
 
@@ -559,4 +533,10 @@ public class MapFragment extends Fragment implements MapMvpView{
 //                break;
 //        }
 //    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }
