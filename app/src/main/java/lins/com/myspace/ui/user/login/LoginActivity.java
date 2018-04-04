@@ -1,7 +1,11 @@
 package lins.com.myspace.ui.user.login;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -117,13 +121,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
                 break;
             case R.id.btn_regis:
                 mActivityUtils.startActivity(RegisterActivity.class);
-                finish();
+                //finish();
                 break;
         }
 
         //去做业务逻辑的处理
        // new LoginPresenter(this).login(new User(mUsername,mPassword));
     }
+    //提供给别的Activity调用来启动该Activity
+    public static void start(Context context){
+        Intent intent = new Intent();
+        intent.setClass(context,RegisterActivity.class);
+        context.startActivity(intent);
+    }
+    //广播类，用于给别的Activity关闭当前Activity
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            unregisterReceiver(this);
+            ((Activity)context).finish();
+        }
+    };
+
 
     //-------------实现接口----------------
     @Override
@@ -144,12 +163,26 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     }
 
     @Override
-    public void navigationToHome() {
+    public void successLogin() {
         mActivityUtils.startActivity(AccountActivity.class);
         finish();
 //        //发送广播，关闭MainActivity界面
 //        Intent intent = new Intent(MainActivity.MAIN_ACTION);
 //        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
+    @Override
+    public void errorFinish() {
+        //finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //注册广播，让别的Activity能够关闭当前Activity
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("delLoginActivity");
+        registerReceiver(this.broadcastReceiver,intentFilter);
     }
 
     @Override

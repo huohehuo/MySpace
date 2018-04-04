@@ -34,7 +34,7 @@ public class FragmentMsg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO 自动生成的方法存根
-        view = inflater.inflate(R.layout.fragment_msg, null);
+        view = inflater.inflate(R.layout.fragment_msg_old, null);
         et_find= (EditText) view.findViewById(R.id.et_find);
         recycler = (RecyclerView) view.findViewById(R.id.rc_msg);
 

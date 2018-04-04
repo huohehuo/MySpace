@@ -1,4 +1,4 @@
-package com.linsbase.view;
+package lins.com.myspace.view;
 
 /**
  * Created by LINS on 2016/12/20.

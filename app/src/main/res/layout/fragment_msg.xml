@@ -1,38 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <EditText 
-        android:id="@+id/et_find"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="搜索"
-        android:textSize="20sp"
-        android:drawableLeft="@drawable/res8"
-        android:layout_margin="10dp"
-        android:background="#aaaa99"
-        android:gravity="center_vertical"
-        />
-
-    <View 
-       android:layout_width="match_parent"
-       android:layout_height="0.5dp"
-       android:background="#007090"
-       android:layout_marginLeft="5dp"
-       android:layout_marginRight="5dp"
-        />
-
-
-    <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-        >
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rc_msg"/>
-        
-    </RelativeLayout>
-    
+    android:gravity="center"
+    android:text="信息"/>
 </LinearLayout>
+</layout>

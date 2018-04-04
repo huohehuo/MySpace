@@ -149,6 +149,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     @Override
     public void navigationToHome() {
         mActivityUtils.startActivity(MainActivity.class);
+        //发送广播，关闭LoginActivity
+        Intent intent = new Intent();
+        intent.setAction("delLoginActivity");
+        sendBroadcast(intent);
+
         finish();
 //        Intent intent = new Intent(MainActivity.MAIN_ACTION);
 //        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);

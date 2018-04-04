@@ -251,7 +251,7 @@ public class MyBaseActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
-        if(keyCode == android.view.KeyEvent.KEYCODE_BACK)
+        if(keyCode == KeyEvent.KEYCODE_BACK)
         {
             finish();
             this.overridePendingTransition(R.anim.anim_alpha_come, R.anim.anim_alpha_gone);

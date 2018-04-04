@@ -81,4 +81,108 @@
     <string name="find_treasure">找到宝藏</string>
     <string name="navigation">开始导航</string>
 
+    <string name="dialog_select_image_title">选择照片</string>
+    <string name="dialog_select_image_message">从哪获取照片?</string>
+    <string name="dialog_select_image_file">相册</string>
+    <string name="dialog_select_image_camera">拍照</string>
+    <string name="fragment_select_image_no_permission">无读取文件权限</string>
+    <string name="activity_crop_menu_done">完成</string>
+    <string name="activity_crop_waiting_crop">正在裁剪图片</string>
+    <string name="activity_crop_waiting_read">正在读取图片</string>
+    <string name="common_hint">提示</string>
+    <string name="common_waiting">请稍后</string>
+
+    <string name="permission">权限(permission)</string>
+    <string name="no_permissions">应用需要必要的运行权限</string>
+
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>
+    <string name="quit">退出</string>
+
+    <string name="aries">白羊座</string>
+    <string name="taurus">金牛座</string>
+    <string name="gemini">双子座</string>
+    <string name="cancer">巨蟹座</string>
+    <string name="leo">狮子座</string>
+    <string name="virgo">处女座</string>
+    <string name="libra">天秤座</string>
+    <string name="scorpio">天蝎座</string>
+    <string name="sagittarius">射手座</string>
+    <string name="capricorn">摩羯座</string>
+    <string name="aquarius">水瓶座</string>
+    <string name="pisces">双鱼座</string>
+
+
+    <string name="provinces">北京,天津,河北,山西,内蒙古,辽宁,吉林,黑龙江,上海,江苏,浙江,安徽,福建,江西,山东,河南,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,陕西,甘肃,青海,宁夏,新疆,台湾,香港,澳门</string>
+    <string-array name="cities">
+        <item>东城区,西城区,海淀区,朝阳区,丰台区,石景山区,通州区,顺义区,房山区,大兴区,昌平区,怀柔区,平谷区,门头沟区,密云县,延庆县</item>
+
+        <item>和平区,河西区,南开区,河东区,河北区,红桥区,东丽区,津南区,西青区,北辰区,滨海新区,武清区,宝坻区,蓟县,宁河县,静海县</item>
+
+        <item>石家庄,唐山,秦皇岛,邯郸,邢台,保定,张家口,承德,沧州,廊坊,衡水</item>
+
+        <item>太原,大同,阳泉,长治,晋城,朔州,晋中,运城,忻州,临汾,吕梁</item>
+
+        <item>呼和浩特,包头,乌海,赤峰,通辽,鄂尔多斯,呼伦贝尔,巴彦淖尔 ,乌兰察布,兴安盟,锡林郭勒盟,阿拉善盟</item>
+
+        <item>沈阳,大连,鞍山,抚顺,本溪,丹东,锦州,营口,阜新,辽阳,盘锦,铁岭,朝阳,葫芦岛</item>
+
+        <item>长春,吉林,四平,辽源,通化,白山,松原,白城,延边</item>
+
+        <item>哈尔滨,齐齐哈尔,鸡西,鹤岗,双鸭山 ,大庆,伊春,佳木斯,七台河,牡丹江,黑河,绥化,大兴安岭</item>
+
+        <item>黄浦区,徐汇区,长宁区,静安区,普陀区,闸北区,虹口区,杨浦区,闵行区,宝山区,嘉定区,浦东新区,金山区,松江区,青浦区,奉贤区,崇明县</item>
+
+        <item>南京,无锡,徐州,常州,苏州,南通,连云港,淮安,盐城,扬州,镇江,泰州,宿迁</item>
+
+        <item>杭州,宁波,温州,嘉兴,湖州,绍兴,金华,衢州,舟山,台州,丽水</item>
+
+        <item>合肥,芜湖,蚌埠,淮南,马鞍山,淮北,铜陵,安庆,黄山,滁州,阜阳,宿州,六安,亳州,池州,宣城</item>
+
+        <item>福州,厦门,莆田,三明,泉州,漳州,南平,龙岩,宁德</item>
+
+        <item>南昌,景德镇,萍乡,九江,新余,鹰潭,赣州,吉安,宜春,抚州,上饶</item>
+
+        <item>济南,青岛,淄博,枣庄,东营,烟台,潍坊,威海,济宁,泰安,日照,莱芜,临沂 ,德州,聊城,滨州,菏泽</item>
+
+        <item>郑州,开封,洛阳,平顶山,焦作,鹤壁,新乡,安阳,濮阳,许昌,漯河,三门峡,南阳 ,商丘,信阳,周口,驻马店</item>
+
+        <item>武汉,黄石,襄阳,十堰,荆州,宜昌,荆门,鄂州,孝感,黄冈,咸宁,随州,恩施</item>
+
+        <item>长沙,株洲,湘潭,衡阳,邵阳,岳阳,常德,张家界,益阳,郴州,永州,怀化,娄底,湘西</item>
+
+        <item>广州,深圳,珠海,汕头,韶关,佛山,江门,湛江,茂名,肇庆,惠州,梅州,汕尾,河源,阳江,清远,东莞,中山,潮州,揭阳,云浮</item>
+
+        <item>南宁,柳州,桂林,梧州,北海,防城港,钦州,贵港,玉林,百色,贺州,河池,来宾,崇左</item>
+
+        <item>海口,三亚</item>
+
+        <item>渝中区,大渡口区,江北区,沙坪坝区,九龙坡区,南岸区,北碚区,綦江区,大足区,渝北区,巴南区,万州区,涪陵区,黔江区,长寿区,江津区,合川区,永川区,南川区,潼南,铜梁,荣昌,璧山,垫江,武隆,丰都,城口,梁平,开县,巫溪,巫山,奉节,云阳,忠县,石柱,彭水,酉阳,秀山</item>
+
+        <item>成都,自贡,攀枝花,泸州,德阳,绵阳,广元,遂宁,内江,乐山,南充 ,宜宾,广安,达州,眉山,雅安,巴中,资阳,阿坝,甘孜,凉山</item>
+
+        <item>贵阳,六盘水,遵义,安顺,铜仁,毕节,黔西南,黔东南,黔南</item>
+
+        <item>昆明,曲靖,玉溪,保山,昭通,丽江,普洱,临沧,文山,红河,西双版纳,楚雄,大理,德宏,怒江,迪庆</item>
+
+        <item>拉萨,昌都,山南,日喀则,那曲,阿里,林芝</item>
+
+        <item>西安,铜川,宝鸡,咸阳,渭南,延安,汉中,榆林,安康,商洛</item>
+
+        <item>兰州,嘉峪关,金昌,白银,天水,武威,张掖,平凉,酒泉,庆阳,定西,陇南,临夏,甘南</item>
+
+        <item>西宁,海东,海北,黄南,海南,果洛,玉树,海西</item>
+
+        <item>银川,石嘴山,吴忠,固原,中卫</item>
+
+        <item>乌鲁木齐,克拉玛依,吐鲁番,哈密,和田,阿克苏,喀什,克孜勒苏,巴音郭楞,昌吉,博尔塔拉,伊犁,塔城,阿勒泰</item>
+
+        <item>台北,高雄</item>
+
+        <item>中西区,湾仔区,东区,南区,九龙城区,油尖旺区,观塘区,黄大仙区,深水埗区,北区,大埔区,沙田区,西贡区,元朗区,屯门区,荃湾区,葵青区,离岛区</item>
+
+        <item>花地玛堂区,圣安多尼堂区,大堂区,望德堂区,风顺堂区,嘉模堂区,圣方济各堂区,路氹城</item>
+
+    </string-array>
 </resources>

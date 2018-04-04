@@ -35,7 +35,7 @@ public class UserPrefs {
     }
 
     public void setObjectId(String id){
-        preferences.edit().putString(KEY_ID,id).commit();
+        preferences.edit().putString(KEY_ID,id).apply();
     }
     public String getObjectId(){
         return preferences.getString(KEY_ID,"no_id");

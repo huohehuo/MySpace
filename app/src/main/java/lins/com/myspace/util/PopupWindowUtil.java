@@ -68,7 +68,7 @@ public class PopupWindowUtil {
 
     public void popupWindow(View v, final ChangeView changeView) {
         AlertDialog.Builder builder = myBuilder(context);
-        final android.app.AlertDialog dialog = builder.show();
+        final AlertDialog dialog = builder.show();
         //点击屏幕外侧，dialog是否消失
         dialog.setCanceledOnTouchOutside(false);
 //监听dialog里的button
@@ -102,7 +102,7 @@ public class PopupWindowUtil {
     protected AlertDialog.Builder myBuilder(Context dialogWindows) {
 
         final LayoutInflater inflater = LayoutInflater.from(context);
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(dialogWindows);
+        AlertDialog.Builder builder = new AlertDialog.Builder(dialogWindows);
         dialogView = inflater.inflate(R.layout.dialog_input, null);
 
         return builder.setView(dialogView);

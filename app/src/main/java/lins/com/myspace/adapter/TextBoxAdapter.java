@@ -26,7 +26,7 @@ public class TextBoxAdapter extends RecyclerView.Adapter<TextBoxAdapter.MsgViewH
 
 
     public interface OnItemClickListener{
-        void onItemClick(View view, int position,TextBoxInfo textBoxInfo);
+        void onItemClick(View view, int position, TextBoxInfo textBoxInfo);
        // void onItemLongClick(View view,int position,TextBoxInfo textBoxInfo);
     }
     private OnItemClickListener mOnItemClickListener;

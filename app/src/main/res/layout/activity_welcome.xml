@@ -22,7 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="150dp"
-        android:visibility="gone">
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -38,16 +38,6 @@
             android:textColor="#696868"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/tv_guanggao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="无广告，不忽悠"
-            android:textColor="#434343"
-            android:textSize="35sp"
-            android:visibility="gone"/>
     </LinearLayout>
 
 

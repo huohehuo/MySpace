@@ -26,7 +26,7 @@ public class FragmentMainAdapter extends RecyclerView.Adapter<FragmentMainAdapte
     private OnItemMainClick onItemMainClick;
     private TextBoxManager textBoxManager;
     public interface OnItemMainClick{
-        void onItemClick(View view,int position,DiaryInfo tb_diary);
+        void onItemClick(View view, int position, DiaryInfo tb_diary);
         //void onItemLongClick(View view,int position);
     }
     public void setOnItemMainClick(OnItemMainClick listener){

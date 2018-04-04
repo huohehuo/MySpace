@@ -37,7 +37,7 @@ public class RegisterPresenter {
                     mRegisterView.navigationToHome();
                 }else{
                    mRegisterView.showMessage("error...");
-
+                    mRegisterView.hideProgress();
                 }
             }
         });

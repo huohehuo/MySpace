@@ -152,7 +152,7 @@ public class KeywordsFlow extends FrameLayout implements ViewTreeObserver.OnGlob
                 removeView(txt);
                 continue;
             }
-            FrameLayout.LayoutParams layParams = (LayoutParams) txt.getLayoutParams();
+            LayoutParams layParams = (LayoutParams) txt.getLayoutParams();
             // Log.d("ANDROID_LAB", txt.getText() + " leftM=" +
             // layParams.leftMargin + " topM=" + layParams.topMargin
             // + " width=" + txt.getWidth());
@@ -289,8 +289,8 @@ public class KeywordsFlow extends FrameLayout implements ViewTreeObserver.OnGlob
                 // 已经调整过前i个需要再次排序
                 sortXYList(listTxt, i + 1);
             }
-            FrameLayout.LayoutParams layParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT);
+            LayoutParams layParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
+                    LayoutParams.WRAP_CONTENT);
             layParams.gravity = Gravity.LEFT | Gravity.TOP;
             layParams.leftMargin = iXY[IDX_X];
             layParams.topMargin = iXY[IDX_Y];

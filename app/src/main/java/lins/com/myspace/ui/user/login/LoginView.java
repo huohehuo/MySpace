@@ -8,5 +8,6 @@ public interface LoginView {
     void showProgress();
     void hideProgress();
     void showMessage(String msg);
-    void navigationToHome();
+    void successLogin();
+    void errorFinish();
 }

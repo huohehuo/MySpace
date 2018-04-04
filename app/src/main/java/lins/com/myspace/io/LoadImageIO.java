@@ -8,5 +8,5 @@ import android.widget.ImageView;
  * Please Try Hard
  */
 public interface LoadImageIO {
-    void getImage(Bitmap bitmap,String url);
+    void getImage(Bitmap bitmap, String url);
 }

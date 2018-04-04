@@ -81,7 +81,7 @@ public class ChatShowActivity extends MyBaseActivity {
     }
 
     private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             //等待接受子线程完成数据的返回
             ChatMessageInfo fromMessage = (ChatMessageInfo) msg.obj;
             mDatas.add(fromMessage);

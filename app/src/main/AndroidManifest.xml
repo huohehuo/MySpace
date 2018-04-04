@@ -66,6 +66,10 @@
         </activity>
         <activity android:name=".ui.user.login.LoginActivity" />
         <activity
+            android:name=".util.piccut.CropImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeBlack" />
+        <activity
             android:name=".ui.AddActivity"
             android:launchMode="singleInstance" />
         <activity
@@ -79,11 +83,13 @@
         <activity android:name=".ui.DealActivity" />
         <activity android:name=".ui.TextBoxActivity" />
         <activity android:name=".ui.MainActivity" />
+        <!--权限检测界面-->
+        <activity android:name=".base.PermissionsActivity" />
         <!-- 在Application标签中声明SERVICE组件,每个APP拥有自己单独的定位SERVICE -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
         <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
@@ -197,8 +203,11 @@
 
         <activity android:name=".ui.user.register.RegisterActivity" />
         <activity android:name=".ui.fragment.map.MapFragment" />
-        <activity android:name=".ui.user.account.AccountActivity" />
-        <activity android:name=".ui.WebActivity"></activity>
+        <activity android:name=".ui.user.account.AccountActivity"/>
+        <activity android:name=".ui.WebActivity"/>
+        <activity android:name=".ui.EditMyInfoActivity"/>
+        <activity android:name=".ui.ChangeMottoActivity"/>
+        <activity android:name=".ui.ChangeNameActivity"/>
     </application>
 
 </manifest>

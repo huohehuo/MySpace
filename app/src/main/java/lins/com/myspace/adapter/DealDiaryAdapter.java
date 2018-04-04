@@ -27,7 +27,7 @@ public class DealDiaryAdapter extends RecyclerView.Adapter<DealDiaryAdapter.Main
     private TextBoxManager textBoxManager;
     public interface OnItemMainClick{
         void onItemClick(View view, int position, DiaryInfo tb_diary);
-        boolean onItemLongClick(View view,int position, DiaryInfo tb_diary);
+        boolean onItemLongClick(View view, int position, DiaryInfo tb_diary);
     }
     public void setOnItemMainClick(OnItemMainClick listener){
         this.onItemMainClick = listener;

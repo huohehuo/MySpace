@@ -1,5 +1,7 @@
 package lins.com.myspace.ui.fragment.map;
 
+import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +50,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import lins.com.myspace.R;
 import lins.com.myspace.base.LinsApp;
+import lins.com.myspace.base.PermissionsActivity;
+import lins.com.myspace.base.PermissionsChecker;
 import lins.com.myspace.util.ActivityUtil;
 
 
@@ -100,6 +104,15 @@ public class MapFragment extends AppCompatActivity implements MapMvpView {
     private static String mLocationAddr;
 
     private Unbinder unbinder;
+
+
+    private static final int REQUEST_CODE = 0;//请求码
+    private PermissionsChecker permissionsChecker;
+    //所需的全部权限
+    static final String[] PERMISSIONS = new String[]{
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +130,7 @@ public class MapFragment extends AppCompatActivity implements MapMvpView {
             getSupportActionBar().setTitle("");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        permissionsChecker = new PermissionsChecker(this);
     }
 
     // toolbar上返回箭头的处理
@@ -533,10 +547,34 @@ public class MapFragment extends AppCompatActivity implements MapMvpView {
 //                break;
 //        }
 //    }
+//---------------------------权限获取处理--------------------------
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //缺少权限时，进入权限配置界面
+        if (permissionsChecker.lacksPermissions(PERMISSIONS)){
+            startPermissionsActivity();
+        }
+    }
+
+    private void startPermissionsActivity(){
+        PermissionsActivity.startActivityForResult(this,REQUEST_CODE,PERMISSIONS);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //拒绝时，关闭页面，缺少主要权限，无法进行
+        if (requestCode == REQUEST_CODE && resultCode ==PermissionsActivity.PERMISSIONS_DENIED){
+            Toast.makeText(MapFragment.this, "地理位置权限授予失败", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mLocationClient.stop();
         unbinder.unbind();
     }
 }

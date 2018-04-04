@@ -5,17 +5,12 @@ import android.content.Context;
 import android.content.res.Configuration;
 
 
-import com.baidu.mapapi.SDKInitializer;
 
+import com.baidu.mapapi.SDKInitializer;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.Random;
-
-import cn.bmob.push.BmobPush;
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobInstallation;
 import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.util.LogUtil;
 import lins.com.myspace.util.UserPrefs;
@@ -26,15 +21,19 @@ import lins.com.myspace.util.UserPrefs;
  */
 public class LinsApp extends Application {
     private static Context context;
+
+    //private static UploadManager mQiniuUploadManager;
+
     // 用来保存整个应用程序数据
     private HashMap<String, Object> allData = new HashMap<String, Object>();
     // 单例模式
     private static LinsApp application;
-
     public static LinsApp getInstance() {
         LogUtil.d(LogUtil.TAG, "MyApplication onCreate");
         return application;
     }
+
+
 
     @Override
     public void onCreate() {
@@ -55,7 +54,10 @@ public class LinsApp extends Application {
         SDKInitializer.initialize(getApplicationContext());
         UserPrefs.init(getApplicationContext());
         LogUtil.d(LogUtil.TAG, "application onCreate");
-
+        // 七牛
+       /* com.qiniu.android.storage.Configuration config = new com.qiniu.android.storage.Configuration.Builder()
+                .zone(Zone.zone0).build();
+        mQiniuUploadManager = new UploadManager(config);*/
 
     }
 
@@ -63,8 +65,11 @@ public class LinsApp extends Application {
     public static Context getContext() {
         return context;
     }
-
-    // 存数据
+/*
+    public static UploadManager getQiniuUploadManager() {
+        return mQiniuUploadManager;
+    }
+    // 存数据*/
     public void addAllData(String key, Object value) {
         allData.put(key, value);
     }
