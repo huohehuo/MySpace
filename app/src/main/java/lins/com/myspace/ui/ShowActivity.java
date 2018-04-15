@@ -10,17 +10,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lins.com.myspace.R;
-import lins.com.myspace.base.LinsApp;
+import lins.com.myspace.base.App;
 import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.entity.DiaryInfo;
-import lins.com.myspace.entity.TextBoxInfo;
 import lins.com.myspace.model.DiaryManager;
 import lins.com.myspace.model.TextBoxManager;
 import lins.com.myspace.util.LogUtil;
@@ -129,8 +127,8 @@ public class ShowActivity extends MyBaseActivity {
     }
 
     private void init() {
-        diaryManager = new DiaryManager(LinsApp.getContext());
-        textBoxManager = new TextBoxManager(LinsApp.getContext());
+        diaryManager = new DiaryManager(App.getContext());
+        textBoxManager = new TextBoxManager(App.getContext());
     }
 
     /**

@@ -17,31 +17,9 @@
     <item name="colorAccent">@color/colorAccent</item>
     <item name="android:windowBackground">@color/all_bg</item>
     </style>
-    <style name="MyDiaLog" parent="Theme.AppCompat.Dialog">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowCloseOnTouchOutside">false</item>
-        <item name="android:layout_width">300dp</item>
-        <item name="android:layout_height">500dp</item>
-        <item name="android:title">请输入数据：</item>
 
-    </style>
     <style name="loading_dialog">
 
-    </style>
-
-
-
-    <style name="AppTheme.Button.Transparent" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">#4DDAFBF5</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="AppTheme.Button.Brown" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">#FF3F383B</item>
-        <item name="android:textColor">@android:color/white</item>
     </style>
 
 
@@ -58,9 +36,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <!--PopupWindow-->
-    <style name="Animation.PopupWindow" parent="Animation.AppCompat.DropDownUp">
-
-    </style>
 
     <style name="AppThemeBlack" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -87,17 +62,4 @@
         <item name="android:windowFrame">@null</item>
     </style>
 
-    <style name="MyDialogTheme" parent="android:Theme.Dialog">
-        <!-- Fill the screen -->
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-
-        <!-- No backgrounds, titles or window float -->
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-
-        <!--&lt;!&ndash; Just to prove it's working &ndash;&gt;-->
-        <!--<item name="android:background">#ff0000</item>-->
-    </style>
 </resources>

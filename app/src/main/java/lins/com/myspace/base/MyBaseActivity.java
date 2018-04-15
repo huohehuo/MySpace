@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -19,13 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import cn.bmob.v3.BmobInstallation;
-import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.R;
-import lins.com.myspace.ui.AddActivity;
 import lins.com.myspace.util.LogUtil;
 import lins.com.myspace.view.ActionBarView;
 
@@ -197,14 +189,12 @@ public class MyBaseActivity extends AppCompatActivity {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        JPushInterface.onResume(this);
         LogUtil.d(LogUtil.TAG,"application onResume");
     }
     @Override
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        JPushInterface.onPause(this);
         LogUtil.d(LogUtil.TAG,"application onPause");
     }
     @Override

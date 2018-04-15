@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import lins.com.myspace.adapter.ViewPagerAdapter;
 import lins.com.myspace.databinding.ActivityAccountBinding;
 import lins.com.myspace.entity.User;
 import lins.com.myspace.ui.EditMyInfoActivity;
-import lins.com.myspace.ui.fragment.map.MapFragment;
+import lins.com.myspace.ui.MarkActivity;
 import lins.com.myspace.util.URL;
 import lins.com.myspace.util.piccut.SelectPhotoDialog;
 import lins.com.myspace.util.piccut.SelectPicUtil;
@@ -55,7 +56,7 @@ public class AccountActivity extends AppCompatActivity {
         binding.ivLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AccountActivity.this, MapFragment.class));
+                startActivity(new Intent(AccountActivity.this, MarkActivity.class));
             }
         });
         binding.ivOut.setOnClickListener(new View.OnClickListener() {

@@ -6,25 +6,21 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import lins.com.myspace.R;
 import lins.com.myspace.adapter.MySpAdapter;
-import lins.com.myspace.base.LinsApp;
+import lins.com.myspace.base.App;
 import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.entity.DiaryInfo;
 import lins.com.myspace.entity.TextBoxInfo;
@@ -68,30 +64,31 @@ public class AddActivity extends MyBaseActivity {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add);
         initView();
-        spAdapter = new MySpAdapter(this, getData());
-        niceSpinner.setAdapter(spAdapter);
-        timer = new Timer();
-        timerTask = new TimerTask() {
-
-            public void run() {
-                Message message = new Message();
-                message.what = 1;
-                handler.sendMessage(message);
-            }
-        };
-        timer.schedule(timerTask, 0, 1 * 1000);
-        //下拉框点击事件
-        niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextBoxInfo textBoxInfo = (TextBoxInfo) parent.getItemAtPosition(position);
-                getBeLongId = textBoxInfo.getTbid();//设置选中的文字包的id
-                //Toast.makeText(LinsApp.getContext(), "选择了：" + textBoxInfo.getName() + getBeLongId, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        spAdapter = new MySpAdapter(this, getData());
+//        spAdapter =null;
+//        niceSpinner.setAdapter(spAdapter);
+//        timer = new Timer();
+//        timerTask = new TimerTask() {
+//
+//            public void run() {
+//                Message message = new Message();
+//                message.what = 1;
+//                handler.sendMessage(message);
+//            }
+//        };
+//        timer.schedule(timerTask, 0, 1 * 1000);
+//        //下拉框点击事件
+//        niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                TextBoxInfo textBoxInfo = (TextBoxInfo) parent.getItemAtPosition(position);
+//                getBeLongId = textBoxInfo.getTbid();//设置选中的文字包的id
+//                //Toast.makeText(App.getContext(), "选择了：" + textBoxInfo.getName() + getBeLongId, Toast.LENGTH_SHORT).show();
+//            }
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
     }
 
     //查找Box中的文字包，并赋给Spinner下拉控件
@@ -123,7 +120,7 @@ public class AddActivity extends MyBaseActivity {
                     if (!et_title.getText().toString().equals("") && !et_diary.getText().toString().equals("")) {
                         String time = SystemUtil.getSystime();
                         LogUtil.d(time);
-                        tb_diary = new DiaryInfo(LinsApp.getInstance().getUUID(), et_title.getText().toString(), et_diary.getText().toString(),
+                        tb_diary = new DiaryInfo(App.getInstance().getUUID(), et_title.getText().toString(), et_diary.getText().toString(),
                                 time, getBeLongId);
                         diaryManager.insert(tb_diary);
                         LogUtil.d(tb_diary.toString());
@@ -154,7 +151,7 @@ public class AddActivity extends MyBaseActivity {
         btn_add.setOnClickListener(clickListener);
         iv_back.setOnClickListener(clickListener);
 
-        diaryManager = new DiaryManager(LinsApp.getContext());
+        diaryManager = new DiaryManager(App.getContext());
     }
 
     @Override

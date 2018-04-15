@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="753392431@qq.com"
-            android:id="@+id/textView4"
             android:layout_below="@+id/textView3"
             android:layout_centerHorizontal="true" />
         </RelativeLayout>

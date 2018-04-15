@@ -1,12 +1,10 @@
 package lins.com.myspace.ui.user.register;
 
 
-import android.widget.Toast;
-
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import lins.com.myspace.entity.User;
-import lins.com.myspace.ui.user.login.LoginPresenter;
+import lins.com.myspace.MVContract.presenter.LoginPresenter;
 
 // 注册的业务类
 public class RegisterPresenter {

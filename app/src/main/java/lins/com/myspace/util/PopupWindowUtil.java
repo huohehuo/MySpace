@@ -2,7 +2,6 @@ package lins.com.myspace.util;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,9 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import lins.com.myspace.R;
-import lins.com.myspace.base.LinsApp;
 import lins.com.myspace.io.ChangeView;
-import lins.com.myspace.io.IsFinishIO;
 
 /**
  * Created by LINS on 2016/12/22.

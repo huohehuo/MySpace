@@ -1,6 +1,5 @@
 package lins.com.myspace.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
@@ -13,7 +12,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lins.com.myspace.R;
-import lins.com.myspace.base.LinsApp;
 import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.view.KeywordsFlow;
 
@@ -79,7 +77,7 @@ public class AboutActivity extends MyBaseActivity {
         keyflowAbout.go2Show(KeywordsFlow.ANIMATION_IN);//由外至内的动画
 //            keywordsFlow.go2Show(KeywordsFlow.ANIMATION_OUT);//由内至外的动画
 
-       // startActivity(new Intent(LinsApp.getContext(),WebActivity.class));
+       // startActivity(new Intent(App.getContext(),WebActivity.class));
 
     }
 

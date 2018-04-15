@@ -6,9 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -18,26 +17,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.LogInListener;
+import lins.com.myspace.MVContract.LoginContract;
+import lins.com.myspace.MVContract.presenter.LoginPresenter;
 import lins.com.myspace.R;
-import lins.com.myspace.entity.User;
-import lins.com.myspace.ui.MainActivity;
-import lins.com.myspace.ui.user.account.AccountActivity;
+import lins.com.myspace.ui.MarkActivity;
 import lins.com.myspace.ui.user.register.RegisterActivity;
 import lins.com.myspace.util.ActivityUtil;
-import lins.com.myspace.util.AlertDialogFragment;
-import lins.com.myspace.util.RegexUtils;
-import lins.com.myspace.util.UserPrefs;
 
-public class LoginActivity extends AppCompatActivity implements LoginView{
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView{
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -105,18 +97,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
         switch (view.getId()){
             case R.id.btn_Login:
-                if (RegexUtils.verifyUsername(mUsername)!=RegexUtils.VERIFY_SUCCESS){
-                    AlertDialogFragment.getInstances(
-                            getString(R.string.username_error),
-                            getString(R.string.username_rules)
-                    ).show(getSupportFragmentManager(),"usernameError");
-                    return;
-                }
-                if (RegexUtils.verifyPassword(mPassword)!=RegexUtils.VERIFY_SUCCESS){
-                    AlertDialogFragment.getInstances(getString(R.string.password_error),
-                            getString(R.string.password_rules)).show(getSupportFragmentManager(),"passwordError");
-                    return;
-                }
+//                if (RegexUtils.verifyUsername(mUsername)!=RegexUtils.VERIFY_SUCCESS){
+//                    AlertDialogFragment.getInstances(
+//                            getString(R.string.username_error),
+//                            getString(R.string.username_rules)
+//                    ).show(getSupportFragmentManager(),"usernameError");
+//                    return;
+//                }
+//                if (RegexUtils.verifyPassword(mPassword)!=RegexUtils.VERIFY_SUCCESS){
+//                    AlertDialogFragment.getInstances(getString(R.string.password_error),
+//                            getString(R.string.password_rules)).show(getSupportFragmentManager(),"passwordError");
+//                    return;
+//                }
                 new LoginPresenter(this).login(mUsername,mPassword);
                 break;
             case R.id.btn_regis:
@@ -164,7 +156,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void successLogin() {
-        mActivityUtils.startActivity(AccountActivity.class);
+        mActivityUtils.startActivity(MarkActivity.class);
         finish();
 //        //发送广播，关闭MainActivity界面
 //        Intent intent = new Intent(MainActivity.MAIN_ACTION);
@@ -188,6 +180,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(this.broadcastReceiver);
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void showToast(String msg) {
+
     }
 }

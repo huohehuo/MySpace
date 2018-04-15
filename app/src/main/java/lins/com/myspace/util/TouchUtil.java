@@ -1,11 +1,5 @@
 package lins.com.myspace.util;
 
-import android.view.MotionEvent;
-
-import java.util.ArrayList;
-
-import lins.com.myspace.ui.MainActivity;
-
 /**
  * Created by LINS on 2016/12/29.
  * Please Try Hard

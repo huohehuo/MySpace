@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.jpush.android.api.JPushInterface;
 import lins.com.myspace.R;
 import lins.com.myspace.util.LogUtil;
 import lins.com.myspace.view.ActionBarView;
@@ -188,14 +187,12 @@ public class MyBaseFragment extends FragmentActivity {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        JPushInterface.onResume(this);
         LogUtil.d(LogUtil.TAG,"application onResume");
     }
     @Override
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        JPushInterface.onPause(this);
         LogUtil.d(LogUtil.TAG,"application onPause");
     }
     @Override

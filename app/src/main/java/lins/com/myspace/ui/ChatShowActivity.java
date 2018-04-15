@@ -7,16 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,33 +21,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import lins.com.myspace.R;
 import lins.com.myspace.adapter.RbMessageAdapter;
 import lins.com.myspace.adapter.TextBoxAdapter;
-import lins.com.myspace.base.LinsApp;
+import lins.com.myspace.base.App;
 import lins.com.myspace.base.MyBaseActivity;
 import lins.com.myspace.entity.ChatMessageInfo;
 import lins.com.myspace.entity.TextBoxInfo;
 import lins.com.myspace.model.RbManager;
-import lins.com.myspace.model.TextBoxManager;
-import lins.com.myspace.util.ConfigUtil;
-import lins.com.myspace.util.RbUtil;
 
 /**
  * Created by LINS on 2016/12/26.
@@ -100,7 +82,7 @@ public class ChatShowActivity extends MyBaseActivity {
         //初始化事件
         //initListener();
 //        rc_mDatas = TextBoxManager.query();
-        textBoxAdapter = new TextBoxAdapter(LinsApp.getContext(), setRightData());
+        textBoxAdapter = new TextBoxAdapter(App.getContext(), setRightData());
         recyclerView.setAdapter(textBoxAdapter);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL));
 

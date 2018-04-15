@@ -7,44 +7,45 @@ import cn.bmob.v3.BmobUser;
  * Please Try Hard
  */
 public class User extends BmobUser{
-    private String userid;
-    private String name;
 
-    private String phonecall;
+    private String pic;
+    private String signature;
+    private String from;
     private String sex;
     private String age;
 
     public User(){}
-    public User(String username, String phonecall, String sex, String age) {
-        this.name = username;
 
-        this.phonecall = phonecall;
+    public User(String pic, String signature, String from, String sex, String age) {
+        this.pic = pic;
+        this.signature = signature;
+        this.from = from;
         this.sex = sex;
         this.age = age;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getPic() {
+        return pic;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 
-    public String getName() {
-        return name;
+    public String getSignature() {
+        return signature;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 
-    public String getPhonecall() {
-        return phonecall;
+    public String getFrom() {
+        return from;
     }
 
-    public void setPhonecall(String phonecall) {
-        this.phonecall = phonecall;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public String getSex() {
@@ -63,12 +64,13 @@ public class User extends BmobUser{
         this.age = age;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
-                "userid='" + userid + '\'' +
-                ", name='" + name + '\'' +
-                ", phonecall='" + phonecall + '\'' +
+                "pic='" + pic + '\'' +
+                ", signature='" + signature + '\'' +
+                ", from='" + from + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age='" + age + '\'' +
                 '}';

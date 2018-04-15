@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/iv_main_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:id="@+id/llll"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:layout_below="@+id/tv_main_essay"
+            android:background="#b4aaaaaa" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llll">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="2012-10-10"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_centerVertical="true"
+
+                android:id="@+id/tv_favour"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/iv_favour"
+                android:text="1人喜欢" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+
+                android:id="@+id/iv_favour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/search" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_main_essay"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ll_top"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textColor="#aaaaaa"
+            android:ellipsize="end"
+            android:layout_margin="8dp"
+            android:text="周末周末速度快速扩大反抗是肯德基哈萨克水陆空间的浪费空间上看到路上看见对方离开教室里的开发建设了款到即发螺丝扣得分酸辣粉森林砍伐"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

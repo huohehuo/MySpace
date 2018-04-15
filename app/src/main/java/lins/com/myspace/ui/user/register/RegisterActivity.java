@@ -2,9 +2,8 @@ package lins.com.myspace.ui.user.register;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -12,20 +11,14 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
 import lins.com.myspace.R;
 import lins.com.myspace.entity.User;
-import lins.com.myspace.ui.MainActivity;
+import lins.com.myspace.ui.MarkActivity;
 import lins.com.myspace.util.ActivityUtil;
-import lins.com.myspace.util.AlertDialogFragment;
-import lins.com.myspace.util.RegexUtils;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterView{
     @BindView(R.id.toolbar)
@@ -106,22 +99,22 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
     @OnClick(R.id.btn_Register_reg)
     public void onClick() {
         //注册的视图和业务处理
-        if (RegexUtils.verifyUsername(mUsername)!=RegexUtils.VERIFY_SUCCESS){
-            // 显示一个错误的对话框
-            AlertDialogFragment.getInstances(
-                    getString(R.string.username_error),
-                    getString(R.string.username_rules)
-            ).show(getSupportFragmentManager(),"usernameError");
-            return;
-        }
-        if (RegexUtils.verifyPassword(mPassword)!=RegexUtils.VERIFY_SUCCESS){
-            // 显示一个错误的对话框
-            AlertDialogFragment.getInstances(
-                    getString(R.string.password_error),
-                    getString(R.string.password_rules)
-            ).show(getSupportFragmentManager(),"passwordError");
-            return;
-        }
+//        if (RegexUtils.verifyUsername(mUsername)!=RegexUtils.VERIFY_SUCCESS){
+//            // 显示一个错误的对话框
+//            AlertDialogFragment.getInstances(
+//                    getString(R.string.username_error),
+//                    getString(R.string.username_rules)
+//            ).show(getSupportFragmentManager(),"usernameError");
+//            return;
+//        }
+//        if (RegexUtils.verifyPassword(mPassword)!=RegexUtils.VERIFY_SUCCESS){
+//            // 显示一个错误的对话框
+//            AlertDialogFragment.getInstances(
+//                    getString(R.string.password_error),
+//                    getString(R.string.password_rules)
+//            ).show(getSupportFragmentManager(),"passwordError");
+//            return;
+//        }
         //提交注册信息
         User user = new User();
         user.setUsername(mUsername);
@@ -148,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView{
 
     @Override
     public void navigationToHome() {
-        mActivityUtils.startActivity(MainActivity.class);
+        mActivityUtils.startActivity(MarkActivity.class);
         //发送广播，关闭LoginActivity
         Intent intent = new Intent();
         intent.setAction("delLoginActivity");
